@@ -11,23 +11,29 @@ pull_requests:
 
 before_build:
 - nuget restore Sprache.sln
-- choco install opencover.portable
-- choco install codecov
+#- choco install opencover.portable
+#- choco install codecov
 
-configuration: Release
-build:
-  project: Sprache.sln
-  parallel: true
-  verbosity: minimal
+build_script:
+- ps: .\build\build.ps1
+
+#configuration: Release
+#build:
+#  project: Sprache.sln
+#  parallel: true
+#  verbosity: minimal
 
 after_build:
 - dotnet pack src/Sprache/Sprache.csproj
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test .\test\Sprache.Tests\Sprache.Tests.csproj" -filter:"+[*]*" -output:".\Sprache_coverage.xml"
-- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test .\samples\TinyTemplates.Tests\TinyTemplates.Tests.csproj" -filter:"+[*]*" -output:".\TinyTemplates_coverage.xml"
-- codecov -f "Sprache_coverage.xml"
-- codecov -f "TinyTemplates_coverage.xml"
+- ps: .\build\test.ps1
+
+#test_script:
+#- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test .\test\Sprache.Tests\Sprache.Tests.csproj" -filter:"+[*]*" -output:".\Sprache_coverage.xml"
+#- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test .\samples\TinyTemplates.Tests\TinyTemplates.Tests.csproj" -filter:"+[*]*" -output:".\TinyTemplates_coverage.xml"
+#- codecov -f "Sprache_coverage.xml"
+#- codecov -f "TinyTemplates_coverage.xml"
 
 artifacts:
 - path: '**\*.nupkg'
