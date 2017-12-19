@@ -15,12 +15,14 @@ namespace Sprache.Tests
         public DecimalTests()
         {
             _previousCulture = CultureInfo.CurrentCulture;
-            CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            // CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
         }
 
         public void Dispose()
         {
-            CultureInfo.CurrentCulture = _previousCulture;
+            // CultureInfo.CurrentCulture = _previousCulture;
+            Thread.CurrentThread.CurrentCulture = _previousCulture;
         }
 
         [Fact]
