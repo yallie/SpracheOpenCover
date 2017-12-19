@@ -16,7 +16,7 @@ namespace Sprache.Tests
         private const string _startsWithCarrot = "^([a-z]{3})([0-9]{3})$";
         private const string _alternation = "(this)|(that)|(the other)";
 
-        private static readonly MethodInfo _optimizeRegexMethod = typeof(Parse).GetMethod("OptimizeRegex", BindingFlags.NonPublic | BindingFlags.Static);
+        private static readonly MethodInfo _optimizeRegexMethod = typeof(Parse).GetTypeInfo().GetMethod("OptimizeRegex", BindingFlags.NonPublic | BindingFlags.Static);
 
         [Fact]
         public void OptimizedRegexIsNotSuccessfulWhenTheMatchIsNotAtTheBeginningOfTheInput()
