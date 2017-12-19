@@ -15,14 +15,14 @@ before_build:
 - choco install opencover.portable
 - choco install codecov
 
-build_script:
-- ps: .\build\build.ps1
+#build_script:
+#- ps: .\build\build.ps1
 
-#configuration: Release
-#build:
-#  project: Sprache.sln
-#  parallel: true
-#  verbosity: minimal
+configuration: Release
+build:
+  project: Sprache.sln
+  parallel: true
+  verbosity: minimal
 
 #after_build:
 #- dotnet pack src/Sprache/Sprache.csproj
