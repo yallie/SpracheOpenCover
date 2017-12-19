@@ -33,8 +33,8 @@ after_build:
 test_script:
 #- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test .\test\Sprache.Tests\Sprache.Tests.csproj" -filter:"+[*]*" -output:".\Sprache_coverage.xml"
 #- OpenCover.Console.exe -register:user -target:"dotnet.exe" -targetargs:"test .\samples\TinyTemplates.Tests\TinyTemplates.Tests.csproj" -filter:"+[*]*" -output:".\TinyTemplates_coverage.xml"
-- OpenCover.Console.exe -register:user -target:"xunit.console.exe" -targetargs:".\test\Sprache.Tests\bin\Release\net461\Sprache.Tests.dll" -filter:"+[*]*" -output:".\Sprache_coverage.xml"
-- OpenCover.Console.exe -register:user -target:"xunit.console.exe" -targetargs:".\samples\TinyTemplates.Tests\bin\Release\net461\TinyTemplates.Tests.dll" -filter:"+[*]*" -output:".\TinyTemplates_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"xunit.console.exe" -targetargs:".\test\Sprache.Tests\bin\Debug\net461\Sprache.Tests.dll" -filter:"+[*]*" -output:".\Sprache_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"xunit.console.exe" -targetargs:".\samples\TinyTemplates.Tests\bin\Debug\net461\TinyTemplates.Tests.dll" -filter:"+[*]*" -output:".\TinyTemplates_coverage.xml"
 - codecov -f "Sprache_coverage.xml"
 - codecov -f "TinyTemplates_coverage.xml"
 
